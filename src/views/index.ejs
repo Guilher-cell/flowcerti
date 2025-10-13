@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowCerti</title>
+
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("includes/header", { user: user }) %>
+
+    <!-- ===== Seção Hero / Destaque ===== -->
+    <section class="hero-home">
+        <div class="hero-home-container">
+    
+            <!-- Texto -->
+            <div class="hero-home-text">
+                <h2>Simplificando a gestão de certificações</h2>
+                <p>Gerencie certificações de forma inteligente, sem burocracia e sem preocupação!</p>
+                <a href="/funcionalidades" class="btn-home-hero">COMO FUNCIONA?</a>
+            </div>
+
+            <!-- Imagem -->
+            <div class="hero-home-image">
+                <img src="Imagem/home/icon_principal.png" alt="Gestão de Certificações">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== Seção Certificações ===== -->
+    <section class="certificacoes">
+        <h2 class="cert-titulo">Certificações disponíveis</h2>
+        <p class="cert-subtitulo">Hoje você pode gerenciar a ISO 9001. Em breve, novas certificações estarão disponíveis!</p>
+
+        <div class="cert-grid">
+            <!-- Ativa -->
+            <div class="cert-card">
+                <!-- ISO 9001 - Certificado -->
+                <img src="Imagem/home/icon-ISO-9001.png" alt="ISO 9001">
+                <h3>ISO 9001:2015</h3>
+                <p>Gerencie sua certificação ISO 9001 de forma simples, prática e digital.</p>
+                <a href="/dashboard" class="btn-cert">GERENCIAR</a>
+            </div>
+
+            <!-- Em breve -->
+            <div class="cert-card soon">
+                <!-- ISO 14001 - Sustentabilidade -->
+                <img src="Imagem/home/icon-ISO-14001.png" alt="ISO 14001">
+                <h3>ISO 14001:2015</h3>
+                <p>Gestão ambiental para empresas que buscam sustentabilidade.</p>
+                <a href="#" class="btn-cert">EM BREVE</a>
+            </div>
+
+            <!-- Em breve -->
+            <div class="cert-card soon">
+                <!-- ISO 27001 - Segurança -->
+                <img src="Imagem/home/icon-ISO-27001.png" alt="ISO 27001">
+                <h3>ISO/IEC 27001:2022</h3>
+                <p>Gestão de segurança da informação para proteger seus dados.</p>
+                <a href="#" class="btn-cert">EM BREVE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Seção: Simplifique a gestão ===== -->
+    <section class="simplifique">
+        <h2 class="simplifique-titulo">Simplifique a gestão e o controlo dos seus certificados</h2>
+
+        <div class="simplifique-container">
+            <!-- Imagem à esquerda -->
+            <div class="simplifique-image">
+                <img src="Imagem/home/icon_simplifique.png" alt="Gestão simples e controlada de certificados">
+            </div>
+
+            <!-- Texto à direita -->
+            <div class="simplifique-texto">
+                <p>A Flowcerti nasceu para transformar a maneira como as empresas lidam com suas certificações. Em vez de enfrentar planilhas confusas, documentos dispersos e prazos esquecidos, você encontra tudo centralizado em um único sistema.</p>
+
+                <p>Nossa plataforma atua como uma <strong>pré-auditoria digital</strong>: organiza documentos, acompanha prazos, sinaliza pendências e mostra, em tempo real, o nível de conformidade da sua empresa.</p>
+
+                <p>O resultado é <strong>mais controle, menos retrabalho</strong> e muito mais confiança durante auditorias. E não para por aí — começamos com a ISO 9001, mas em breve novas normas, como ISO 14001 e ISO 27001, estarão disponíveis para que sua empresa cresça sem barreiras.</p>               
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Seção Blog ===== -->
+<section class="blog-section">
+  <h2 class="blog-section-title">Últimos posts no blog</h2>
+
+  <div class="blogs-grid">
+    <!-- Blog 1 -->
+    <article class="blog-card">
+      <a href="/blog1" class="blog-img-link">
+        <img src="Imagem/blogs/ISO-90012026.png" alt="ISO 9001:2026">
+      </a>
+      <div class="blog-content">
+        <a href="/blog1" class="blog-title"> 
+          O Impacto da Atualização da ISO 9001:2026 – O Que as Empresas Precisam Saber
+        </a>
+        <p>
+          A nova versão 2026 trará mudanças ligadas a sustentabilidade, digitalização,
+          cultura organizacional e resiliência.
+        </p>
+        <div class="blog-meta">
+          <span>09/10/25</span> • <span>4 min. de leitura</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Blog 2 -->
+    <article class="blog-card">
+      <a href="/blog2" class="blog-img-link">
+        <img src="Imagem/blogs/certificacoes-empresariais.png" alt="Certificações Empresariais">
+      </a>
+      <div class="blog-content">
+        <a href="/blog2" class="blog-title">
+          Certificações Empresariais: Quais Sua Empresa Precisa Ter e Por Que São Importantes
+        </a>
+        <p>
+          As certificações empresariais funcionam como selos que comprovam
+          credibilidade e responsabilidade no mercado.
+        </p>
+        <div class="blog-meta">
+          <span>09/10/25</span> • <span>6 min. de leitura</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Blog 3 -->
+    <article class="blog-card">
+      <a href="/blog3" class="blog-img-link">
+        <img src="Imagem/blogs/certificacao-vs-acreditacao.png" alt="Certificação, Acreditação, Selo ou Declaração">
+      </a>
+      <div class="blog-content">
+        <a href="/blog3" class="blog-title">
+          Certificação, Acreditação, Selo ou Declaração: Qual a Diferença?
+        </a>
+        <p>
+          Entenda de forma prática e objetiva os conceitos de certificação,
+          acreditação, selo e declaração – e como cada um impacta a credibilidade
+          da sua empresa.
+        </p>
+        <div class="blog-meta">
+          <span>09/10/25</span> • <span>5 min. de leitura</span>
+        </div>
+      </div>
+    </article> 
+
+    <!-- Blog 4 -->
+    <article class="blog-card">
+      <a href="/blog4" class="blog-img-link">
+        <img src="Imagem/blogs/ISO9001_o_que.png" alt="ISO 9001: O Que é, Para Que Serve e Quais os 7 Princípios">
+      </a>
+      <div class="blog-content">
+        <a href="/blog4" class="blog-title">
+          ISO 9001: O Que é, Para Que Serve e Quais os 7 Princípios da Norma
+        </a>
+        <p>
+          Descubra os benefícios da ISO 9001, sua aplicação prática e os 7 princípios
+          fundamentais da gestão da qualidade que sustentam a norma.
+        </p>
+        <div class="blog-meta">
+          <span>09/10/25</span> • <span>5 min. de leitura</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Link para mais artigos -->
+<div class="blog-more">
+  <a href="/blog">VER MAIS ARTIGOS</a>
+</div>
+
+</section>
+ <%- include('includes/footer') %>
+    
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

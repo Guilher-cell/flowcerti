@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowCerti - ISO 9001:2015 - 6.3 Planejamento de mudanças</title>
+
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/subcapitulo.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("../includes/header", { user: user }) %>
+
+    <ul class="breadcrumb">
+  <li><a href="/">Início</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </li>
+  <li><a href="/dashboard">Dashboard</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </li>
+  <li><a href="/gerenciar">ISO 9001:2015</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </li>
+  <li><a href="/iso9001/6">6. Planejamento</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </li>
+  <li class="current">6.3 Planejamento de mudanças</li>
+</ul>
+
+<!-- ===== Subcapítulo 6.3 ===== -->
+<main class="subcap">
+  <%- include('../includes/messages') %>
+
+    <div class="subcap-header">
+  <h2>6.3 Planejamento de mudanças</h2>
+  <p>Envie o documento principal que comprove este requisito e utilize o checklist apenas como lembrete do conteúdo que ele deve cobrir.</p>
+</div>
+
+<!-- Orientação -->
+<section class="subcap-hint">
+  <button class="subcap-hint-toggle" aria-expanded="false">
+    <span>Ver orientação do documento</span>
+    <svg viewBox="0 0 24 24" class="chev"><path d="M7 10l5 5 5-5"/></svg>
+  </button>
+  <div class="subcap-hint-body" hidden>
+    <p><strong>Documento recomendado:</strong> Registro de mudanças
+      <span class="muted">(formulário ou planilha com justificativa, impacto e aprovação)</span>.
+    </p>
+  </div>
+</section>
+
+<!-- Checklist -->
+<section class="subcap-checklist">
+  <h3>Checklist do Documento</h3>
+  <form action="/iso9001/<%= capitulo %>/checklist" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <ul>
+      <li>
+        <label class="chk">
+          <input type="checkbox" name="chk_mudancas" class="chk-item" <%= documentos[0]?.checklist?.includes("chk_mudancas") ? "checked" : "" %>>
+          <span class="checkmark"></span>
+          <span>Registro das mudanças realizadas</span>
+        </label>
+        <button type="button" class="more" data-target="c1">Ler mais</button>
+        <div id="c1" class="more-body" hidden>
+          Documente todas as mudanças que afetam o SGQ,
+          como novos processos, sistemas ou produtos.
+        </div>
+      </li>
+
+      <li>
+        <label class="chk">
+          <input type="checkbox" name="chk_justificativa" class="chk-item" <%= documentos[0]?.checklist?.includes("chk_justificativa") ? "checked" : "" %>>
+          <span class="checkmark"></span>
+          <span>Justificativa e propósito da mudança</span>
+        </label>
+        <button type="button" class="more" data-target="c2">Ler mais</button>
+        <div id="c2" class="more-body" hidden>
+          Explique o porquê da mudança e quais resultados se espera alcançar.
+        </div>
+      </li>
+
+      <li>
+        <label class="chk">
+          <input type="checkbox" name="chk_avaliacao" class="chk-item" <%= documentos[0]?.checklist?.includes("chk_avaliacao") ? "checked" : "" %>>
+          <span class="checkmark"></span>
+          <span>Avaliação das consequências</span>
+        </label>
+        <button type="button" class="more" data-target="c3">Ler mais</button>
+        <div id="c3" class="more-body" hidden>
+          Analise impactos positivos e negativos antes da implementação da mudança.
+        </div>
+      </li>
+
+      <li>
+        <label class="chk">
+          <input type="checkbox" name="chk_integridade"  class="chk-item" <%= documentos[0]?.checklist?.includes("chk_integridade") ? "checked" : "" %>>
+          <span class="checkmark"></span>
+          <span>Garantia de integridade do SGQ após a mudança</span>
+        </label>
+        <button type="button" class="more" data-target="c4">Ler mais</button>
+        <div id="c4" class="more-body" hidden>
+          Comprove que o SGQ continua funcionando corretamente após as mudanças.
+        </div>
+      </li>
+    </ul>
+
+    <p class="subcap-note">* O checklist é apenas um lembrete. O documento enviado deve cobrir todos os pontos.</p>
+
+    <div class="form-actions">
+      <button type="submit" id="btn-salvar-checklist" class="btn-subcap-salvar">Salvar Checklist</button>
+    </div>
+  </form>
+</section>
+
+
+<!-- Upload + Ações -->
+<section class="subcap-upload">
+  <form action="/iso9001/<%= capitulo %>/upload" method="POST" enctype="multipart/form-data" id="form-subcap">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <div class="upload-actions">
+      <!-- Botão de anexo -->
+      <input type="file" id="file-upload" name="ficheiros[]" multiple hidden>
+      <label for="file-upload" class="btn-anexo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="M12 5v14"/>
+        </svg>
+        Adicionar anexo
+      </label>
+
+      <!-- Botões de ação -->
+      <div class="form-actions">
+        <button type="submit" id="btn-salvar" class="btn-subcap-salvar">Salvar</button>
+        <button type="button" id="btn-cancelar" class="btn-subcap-cancelar" hidden>Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Pré-visualização -->
+    <div id="file-preview" class="file-preview vazio">
+      <em>Nenhum arquivo selecionado.</em>
+    </div>
+  </form>
+
+  <!-- Arquivos já anexados -->
+  <% if (documentos && documentos.length > 0) { %>
+    <div class="subcap-arquivos">
+      <% documentos.forEach(doc => { %>
+        <% if (doc.ficheiros && doc.ficheiros.length > 0) { %>
+          <% doc.ficheiros.forEach(f => { %>
+            <div class="file-row">
+              <!-- Nome -->
+              <span class="file-name"><%= f.nomePersonalizado || f.nomeOriginal %></span>
+
+              <!-- Tamanho -->
+              <span class="file-size"><%= (f.size / 1024).toFixed(2) %> KB</span>
+
+              <!-- Aprovado por -->
+              <input type="text" value="<%= f.aprovadoPor || '' %>" placeholder="Aprovado por..." readonly>
+
+              <!-- Ações (download + excluir) -->
+              <div class="file-actions">
+                <!-- Botão de download -->
+                <a href="/uploads/<%= f.path %>" target="_blank" class="btn-download" title="Baixar arquivo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                       viewBox="0 0 24 24" fill="none" stroke="#04b2f2"
+                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/>
+                  </svg>
+                </a>
+
+                <!-- Botão excluir -->
+                <form action="/iso9001/<%= capitulo %>/ficheiro/<%= f._id %>/apagar"
+                      method="POST" style="display:inline;">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit" class="btn-apagar" title="Excluir arquivo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                         viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round"
+                         class="lucide lucide-trash-2">
+                      <path d="M10 11v6"/><path d="M14 11v6"/>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                      <path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+          <% }) %>
+        <% } %>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+  
+  </main>  
+
+    <%- include('../includes/footer') %>
+    
+    <script src="/assets/js/subcapitulo.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades - FlowCerti</title>
+    
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/funcionalidades.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("includes/header", { user: user }) %>
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="/">Início</a></li>
+        <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li class="current">Funcionalidades</li>
+    </ul>
+
+
+    <section class="funcionalidades">
+        <div class="cards-container-funcionalidades">
+            <!-- Card 1 -->
+            <div class="card-funcionalidades">
+                <h3 class="titulo-card-funcionalidades">Monitoramento de prazos</h3>
+                <p class="texto-card-funcionalidades">Receba alertas automáticos e antecipados sobre vencimentos, pendências e atualizações. O monitoramento mantém você no controle dos prazos da certificação, evitando atrasos e problemas que comprometam a conformidade.</p>
+
+                <a href="https://www.youtube.com/watch?v=4smyMM-qjFY" class="sabia-mais-card-funcionalidades">Saiba Mais</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-funcionalidades">
+                <h3 class="titulo-card-funcionalidades">Gestão de requisitos</h3>
+                <p class="texto-card-funcionalidades">Centralize os requisitos documentais com checklists que mostram claramente o que cada documento deve conter. Assim, você identifica rapidamente o que falta, reduz retrabalho e garante maior conformidade nas auditorias.</p>
+
+                <a href="https://www.youtube.com/watch?v=xx-0adD1y_M" class="sabia-mais-card-funcionalidades">Saiba Mais</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-funcionalidades">
+                <h3 class="titulo-card-funcionalidades">Armazenamento de Documentos</h3>
+                <p class="texto-card-funcionalidades">Organize toda a documentação da certificação em pastas criadas por você. Assim, na hora de uma consultoria ou auditoria, todos os arquivos estarão centralizados e prontos para acesso, sem complicação.</p>
+
+                <a href="https://www.youtube.com/watch?v=NJwLWhSHvdw" class="sabia-mais-card-funcionalidades">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+
+    <%- include('includes/footer') %>
+    
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

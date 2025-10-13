@@ -1,0 +1,321 @@
+/* ===== Página Documentos Gerais ===== */
+.container-documentos {
+  text-align: center;
+  margin: 80px auto;
+  max-width: 1300px;
+}
+
+.texto-documentos {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.7;
+  word-spacing: 1px;
+  color: #cccccc;
+  margin-bottom: 60px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Botão Criar Pasta */
+.btn-modal-criar-pasta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 28px;
+  font-size: 16px;
+  background-color: #0084ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.btn-modal-criar-pasta svg {
+  stroke: #ffffff;
+  width: 18px;
+  height: 18px;
+}
+.btn-modal-criar-pasta:hover {
+  background-color: #006bcf;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(14, 22, 41, 0.95);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.modal-content {
+  background: #0e1629;
+  padding: 60px 50px 30px 50px;
+  border-radius: 12px;
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  animation: aparecer 0.6s ease forwards;
+}
+.modal-content h2 {
+  font-size: 26px;
+  font-weight: 800;
+  font-family: "Sora", sans-serif;
+  margin-bottom: 35px;
+  margin-top: -10px;
+}
+@keyframes aparecer {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes desaparecer {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(0.9); opacity: 0; }
+}
+.modal.fechando .modal-content {
+  animation: desaparecer 0.4s ease forwards;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #00aaff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close:hover {
+  color: #ffffff;
+}
+
+/* Formulário Modal */
+.btn-criar-modal,
+.modal-content-forms input,
+.modal-content-forms textarea {
+  width: 100%;
+  padding: 13px 12px 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #2b3b5e;
+  background: #0e1629;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+.modal-content-forms input::placeholder,
+.modal-content-forms textarea::placeholder {
+  color: #999999;
+  opacity: 0.6;
+}
+.modal-content-forms input:focus,
+.modal-content-forms textarea:focus {
+  border-color: #0084ff;
+  box-shadow: 0 0 6px rgba(0,132,255,0.4);
+}
+.modal-content-forms textarea {
+  resize: none;
+  height: 100px;
+}
+.btn-criar-modal {
+  background: #0084ff;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 15px;
+}
+.btn-criar-modal:hover {
+  background: #006bcf;
+  box-shadow: 0 4px 12px rgba(0, 132, 255, 0.1);
+}
+
+/* =========================
+   Grid de Pastas
+   ========================= */
+.pastas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Card da Pasta */
+.pasta-card {
+  background: linear-gradient(145deg, #0e1730,  #192b55);
+  border: 1px solid #2b3b5e;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+.pasta-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 132, 255, 0.2);
+  border-color: #0084ff;
+}
+
+/* Link ocupa todo o card */
+.pasta-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 22px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* Ícone da pasta (SVG agora) */
+.pasta-icon svg {
+  width: 54px;
+  height: 54px;
+  stroke: #66b2ff; /* cor do ícone */
+  flex-shrink: 0;
+  transition: stroke 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.pasta-card:hover .pasta-icon svg {
+  stroke: #0084ff; /* fica azul mais vivo no hover */
+}
+
+/* Info da pasta */
+.pasta-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.pasta-nome {
+  font-family: "Sora", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pasta-descricao {
+  font-size: 14px;
+  color: #9fb3da;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 42px;
+}
+
+/* Informações extras */
+.pasta-data {
+  font-size: 13px;
+  color: #ccd6f6;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 14px;
+  border-top: 1px solid #2b3b5e;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pasta-data .linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pasta-data strong {
+  color: #00aaff;
+  font-weight: 600;
+}
+
+/* Nenhuma pasta */
+.nenhuma-pasta {
+  text-align: center;
+  grid-column: 1 / -1;
+  font-size: 18px;
+  color: #7788aa;
+  padding: 30px 0;
+}
+
+/* Botão de opções (3 pontinhos) */
+.pasta-opcoes {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.btn-opcoes {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.btn-opcoes:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Menu suspenso */
+.menu-opcoes {
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  background: #182950;
+  border: 1px solid #2b3b5e;
+  border-radius: 8px;
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+  min-width: 120px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.menu-opcoes li {
+  width: 100%;
+}
+
+.menu-opcoes a {
+  display: block;
+  padding: 8px 14px;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.menu-opcoes a:hover {
+  background: rgba(0,132,255,0.2);
+}
+
+/* Quando ativo */
+.pasta-opcoes.ativo .menu-opcoes {
+  display: block;
+}

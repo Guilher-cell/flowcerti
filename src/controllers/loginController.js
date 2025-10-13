@@ -1,0 +1,135 @@
+const Cadastro = require('../Schemas/cadastroSchema'); 
+const Funcionario = require('../Schemas/funcionarioSchema');
+const nodemailer = require('nodemailer');
+
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+
+exports.index = (req, res) => {
+  if (req.session.user) return res.redirect('/');
+  res.render('login', { csrfToken: req.csrfToken() });
+};
+
+
+exports.login = async function (req, res) {
+  try {
+    const { user, password } = req.body;
+
+   
+    let cadastro = await Cadastro.findOne({
+      $or: [{ user: user }, { email: user }]
+    }).select('+password');
+
+    if (cadastro && await cadastro.isCorrectPassword(password)) {
+      if (!cadastro.ativo) {
+        req.flash('errors', 'Conta ainda não confirmada. Verifique seu e-mail!');
+        return req.session.save(() => res.redirect('/login'));
+      }
+
+   
+      const tempUser = {
+        _id: cadastro._id,
+        user: cadastro.user,
+        email: cadastro.email,
+        cnpj: cadastro.cnpj,
+        role: cadastro.role,        
+        empresaId: cadastro._id,    
+        permissoes: cadastro.permissoes || {},
+        twoFAEnabled: cadastro.twoFAEnabled || false,
+      };
+
+     
+      if (cadastro.twoFAEnabled) {
+        req.session.tempUser = tempUser;
+
+        const code = Math.floor(100000 + Math.random() * 900000).toString();
+        req.session.temp2FACode = code;
+
+        await transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: cadastro.email,
+          subject: 'Seu código de verificação (2FA)',
+          text: `Seu código de login é: ${code}`,
+        });
+
+        req.flash('success', 'Código enviado para seu e-mail.');
+        return req.session.save(() => res.redirect('/login/2fa'));
+      }
+
+      
+      req.session.user = tempUser;
+      req.flash('success', `Login realizado como ${cadastro.role}!`);
+      return req.session.save(() => res.redirect('/'));
+    }
+
+  
+    const funcionario = await Funcionario.findOne({
+      $or: [{ usuario: user }, { email: user }]
+    }).select('+senha');
+
+    if (funcionario && await funcionario.isCorrectPassword(password)) {
+      req.session.user = {
+        _id: funcionario._id,
+        user: funcionario.usuario,
+        nome: funcionario.nome,
+        cargo: funcionario.cargo,
+        role: 'funcionario',
+        empresaId: funcionario.empresaId,
+        permissoes: funcionario.permissoes || {},
+      };
+
+      req.flash('success', 'Login de funcionário realizado com sucesso!');
+      return req.session.save(() => res.redirect('/'));
+    }
+
+    req.flash('errors', 'Usuário/e-mail ou senha inválidos.');
+    return req.session.save(() => res.redirect('/login'));
+
+  } catch (e) {
+    console.error('--- ERRO CRÍTICO NO LOGIN CONTROLLER ---', e);
+    req.flash('errors', 'Ocorreu um erro interno no sistema.');
+    return req.session.save(() => res.redirect('/login'));
+  }
+};
+
+
+exports.login2FA = (req, res) => {
+  if (!req.session.tempUser) return res.redirect('/login');
+  res.render('verificacao2fa', { csrfToken: req.csrfToken() });
+};
+
+
+exports.confirm2FA = async (req, res) => {
+  const { code } = req.body;
+
+  if (code === req.session.temp2FACode) {
+    req.session.user = req.session.tempUser;
+    req.session.tempUser = null;
+    req.session.temp2FACode = null;
+
+    req.flash('success', 'Login com 2FA realizado com sucesso!');
+    return req.session.save(() => res.redirect('/'));
+  }
+
+  req.flash('errors', 'Código inválido. Tente novamente.');
+  return req.session.save(() => res.redirect('/login/2fa'));
+};
+
+
+exports.logout = function (req, res) {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Erro ao destruir a sessão:', err);
+      return res.redirect('/'); 
+    }
+    res.clearCookie('connect.sid'); 
+    return res.redirect('/'); 
+  });
+};

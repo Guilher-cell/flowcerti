@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Demonstração - FlowCerti</title>
+    
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/solicitar_demonstracao.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <%- include("includes/header", { user: user }) %>
+
+    <!-- Breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="/">Início</a></li>
+        <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li class="current">Solicite Demonstração</li>
+    </ul>
+
+
+    <div class="solicite-demonstracao">
+        <h1 class="titulo-solicite-demonstracao">Solicite uma demonstração</h1>
+        <div class="texto-inteiro-solicite-demonstracao">
+            <p class="texto-solicite-demonstracao">A função Solicitar Demonstração foi criada para que empresas interessadas possam conhecer de perto como funciona a gestão de certificações dentro da FlowCerti. Basta preencher os dados no formulário abaixo e nossa equipe entrará em contato pelo e-mail informado para apresentar a plataforma e mostrar todas as funcionalidades do sistema. Assim, sua empresa poderá entender na prática como é simples organizar e acompanhar as certificações ISO com a FlowCerti e, se desejar, assinar um plano para começar a utilizar a solução.</p>
+        </div>
+    </div>
+
+    <%- include('includes/messages') %>
+    <div class="form-container-solicite-demonstracao">
+        <div class="form-content-solicite">
+            <p class="form-texto-solicite-demonstracao">Caso você for uma <strong>pessoa física, autônomo ou MEI</strong>, infelizmente não podemos ajudá-lo.  
+          Na FlowCerti, atendemos exclusivamente empresas para a centralização e o controle de seus certificados ISO.</p>
+
+               <form class="form-solicite-demonstracao" id="form-solicite-demonstracao" method="POST" action="/solicitar-demonstracao">
+            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+            <input type="text" name="nomeResponsavel" class="input-solicite-demonstracao" placeholder="Nome do responsável" required>
+            <input type="text" name="razaoSocial" class="input-solicite-demonstracao" placeholder="Razão Social" required>
+            <input type="email" name="email" class="input-solicite-demonstracao" placeholder="E-mail (Corporativo)" required>
+
+            <div class="form-row-solicite-demonstracao">
+            <input type="text" name="cnpj" class="input-solicite-demonstracao" placeholder="CNPJ" required>
+            <input type="text" name="ramoEmpresa" class="input-solicite-demonstracao" placeholder="Ramo da Empresa" required>
+            </div>
+
+            <textarea name="mensagem" name="mensagem" class="textarea-solicite-demonstracao" placeholder="Mensagem adicional (opcional)"></textarea>
+
+            <label class="checkbox-solicite-demonstracao">
+                    <input type="checkbox" required>
+                    <span class="checkmark"></span>
+                    <span>Li e aceito a <a href="/politica" class="link-politica">Política de Privacidade da FlowCerti</a></span>
+                </label>
+
+            <button type="submit" class="btn-enviar-solicite-demonstracao">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+  
+    <div class="info-extra-solicite-demonstracao">
+        <div class="info-extra-container-solicite-demonstracao">
+            <div class="info-box-solicite-demonstracao">
+                <h3>Quer saber sobre Planos?</h3>
+                <p>Descubra todos os detalhes sobre os planos disponíveis na Flowcerti. Acesse a aba Planos e encontre a opção ideal para a sua empresa, garantindo praticidade e segurança na gestão das certificações.</p>
+                <a href="/planos" class="btn-planos-solicite-demonstracao">Planos</a>
+            </div>
+
+            <div class="info-box-solicite-demonstracao">
+                <h3>Precisa de Suporte?</h3>
+                <p>Encontre ajuda rápida na nossa Central de Ajuda. Lá você terá acesso a Perguntas Frequentes (FAQ), canais de contato, informações comerciais, links úteis e nossas redes sociais oficiais para tirar dúvidas e se manter atualizado.</p>
+                <a href="/central_ajuda" class="btn-central-de-ajuda-solicite-demonstracao">Central De Ajuda</a>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('includes/footer') %>
+    
+    <script src="/assets/js/solicitar_demonstracao.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

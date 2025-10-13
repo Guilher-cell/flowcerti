@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos Gerais - FlowCerti</title>
+    
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/documentos.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+   <%- include("includes/header", { user: user }) %>
+
+   <!-- Breadcrumb -->
+<ul class="breadcrumb">
+  <li><a href="/">Início</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 18 6-6-6-6"/>
+    </svg>
+  </li>
+  <li class="current">Documentos Gerais</li>
+</ul>
+
+<div class="container-documentos">
+  <%- include('includes/messages') %>
+  <p class="texto-documentos">
+    Organize todos os seus documentos em pastas personalizadas, mantendo-os centralizados e acessíveis. 
+    Essa funcionalidade facilita a gestão e garante que, no momento da auditoria, seus arquivos estejam estruturados e prontos para apresentação.
+  </p>
+
+  <button id="btn-criar-pasta" class="btn-modal-criar-pasta">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+      <path d="M5 12h14"/><path d="M12 5v14"/>
+    </svg>
+    Criar Pasta
+  </button>
+</div>
+
+<div class="pastas-grid">
+  <% if (documentos && documentos.length > 0) { %>
+    <% documentos.forEach(doc => { %>
+      <div class="pasta-card">
+        <a href="/documentos/<%= doc._id %>" class="pasta-link">
+          <div class="pasta-icon">
+            <!-- Substituição do IMG pelo SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
+                 fill="none" stroke="currentColor" stroke-width="1.5" 
+                 stroke-linecap="round" stroke-linejoin="round" 
+                 class="lucide lucide-folder">
+              <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+            </svg>
+          </div>
+          <div class="pasta-info">
+            <h3 class="pasta-nome"><%= doc.nome %></h3>
+            <p class="pasta-descricao"><%= doc.descricao || 'Sem descrição' %></p>
+          </div>
+        </a>
+
+        <div class="pasta-data">
+          <div class="linha">
+            <strong>Criado em:</strong>
+            <span><%= doc.createdAt ? doc.createdAt.toLocaleDateString('pt-BR') : "Indisponível" %></span>
+          </div>
+          <div class="linha">
+            <strong>Última alteração:</strong>
+            <span><%= doc.ultimaAlteracao ? doc.ultimaAlteracao.toLocaleDateString('pt-BR') : "Nunca" %></span>
+          </div>
+          <div class="linha">
+            <strong>Alterado por:</strong>
+            <span><%= doc.alteradoPor ? (doc.alteradoPor.user || doc.alteradoPor.nome || doc.alteradoPor.usuario) : '—' %></span>
+          </div>
+          <div class="linha">
+            <strong>Arquivos:</strong>
+            <span><%= doc.ficheiros.length %></span>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p class="nenhuma-pasta">Nenhuma pasta foi criada ainda. Clique em "Criar Pasta" para começar.</p>
+  <% } %>
+</div>
+
+<!-- Modal Criar Pasta -->
+<div id="modal-criar-pasta" class="modal">
+  <div class="modal-content">
+    <div class="modal-content-forms">
+      <span class="close">&times;</span>
+      <h2>Criar Nova Pasta</h2>
+      <form id="form-criar-pasta" method="POST" action="/documentos/criar">
+        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+        <input type="text" name="nome" placeholder="Nome da Pasta" id="nomePasta" required>
+        <textarea name="descricao" placeholder="Descrição (opcional)" id="descricaoPasta" rows="4"></textarea>
+        <button type="submit" class="btn-criar-modal">CRIAR PASTA</button>
+      </form>
+    </div>
+  </div>
+</div> 
+
+
+    <%- include('includes/footer') %>
+    
+    <script src="/assets/js/documentos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

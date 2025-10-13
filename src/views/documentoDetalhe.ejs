@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- O título da página agora é dinâmico -->
+    <title> Documentos - <%= documento.nome %> - FlowCerti</title>
+    
+    <link rel="icon" type="image/png" href="/Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <!-- Usaremos o mesmo CSS da página de documentos por enquanto -->
+    <link rel="stylesheet" href="/css/documento-detalhes.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("includes/header", { user: user }) %>
+
+   <!-- Breadcrumb -->
+<ul class="breadcrumb">
+  <li><a href="/">Início</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+         viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" 
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 18 6-6-6-6"/>
+    </svg>
+  </li>
+  <li><a href="/documentos">Documentos Gerais</a></li>
+  <li>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+         viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" 
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 18 6-6-6-6"/>
+    </svg>
+  </li>
+  <li class="current"><%= documento.nome %></li>
+</ul>
+
+<div class="container-documentos-detalhe">
+  
+  <!-- Header Detalhe -->
+  <div class="detalhe-header">
+    <div>
+      <h1 class="detalhe-titulo"><%= documento.nome %></h1>
+      <p class="detalhe-descricao"><%= documento.descricao || 'Nenhuma descrição fornecida.' %></p>
+    </div>
+
+    <!-- 3 Pontinhos -->
+    <div class="pasta-opcoes">
+      <button class="btn-opcoes" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" 
+             stroke-linecap="round" stroke-linejoin="round" 
+             class="lucide lucide-ellipsis-vertical">
+          <circle cx="12" cy="12" r="1"/>
+          <circle cx="12" cy="5" r="1"/>
+          <circle cx="12" cy="19" r="1"/>
+        </svg>
+      </button>
+      <ul class="menu-opcoes">
+        <li><a href="#" id="btn-editar-pasta">Editar</a></li>
+        <li><a href="#" id="btn-excluir-pasta">Excluir</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('includes/messages') %>
+
+  <!-- Upload + Ações -->
+<section class="documentos-upload">
+  <form action="/documentos/<%= documento._id %>/upload" method="POST" enctype="multipart/form-data" id="form-documentos">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <div class="upload-actions">
+      <input type="file" id="file-upload" name="ficheiros" multiple hidden>
+      <label for="file-upload" class="btn-anexo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="M12 5v14"/>
+        </svg>
+        Adicionar anexo
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" id="btn-salvar" class="btn-doc-salvar">Salvar</button>
+        <button type="button" id="btn-cancelar" class="btn-doc-cancelar" hidden>Cancelar</button>
+      </div>
+    </div>
+
+    <div id="file-preview" class="file-preview vazio">
+      <em>Nenhum arquivo selecionado.</em>
+    </div>
+  </form>
+
+  <!-- Arquivos já anexados -->
+  <% if (documento.ficheiros && documento.ficheiros.length > 0) { %>
+    <div class="documentos-arquivos">
+      <% documento.ficheiros.forEach(f => { %>
+        <div class="file-row">
+          <!-- Nome -->
+          <span class="file-name"><%= f.nomePersonalizado || f.nomeOriginal %></span>
+
+          <!-- Tamanho -->
+          <span class="file-size"><%= (f.size / 1024).toFixed(2) %> KB</span>
+
+          <!-- Input aprovado -->
+          <input type="text"
+                 name="aprovadoPor[]"
+                 placeholder="Aprovado por..."
+                 value="<%= f.aprovadoPor || '' %>"
+                 readonly required>
+
+          <!-- Ações (download + excluir) -->
+          <div class="file-actions">
+            <!-- Botão de download -->
+            <a href="/uploads/<%= f.path %>" target="_blank" class="btn-download" title="Baixar arquivo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                   fill="none" stroke="#04b2f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/>
+              </svg>
+            </a>
+
+            <!-- Botão excluir -->
+            <form action="/documentos/<%= documento._id %>/ficheiro/<%= f._id %>/apagar" method="POST" style="display:inline;">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button type="submit" class="btn-apagar" title="Excluir arquivo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                     viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
+                     class="lucide lucide-trash-2">
+                  <path d="M10 11v6"/><path d="M14 11v6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                  <path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+
+</div>
+
+<!-- ==================== Modais ==================== -->
+
+<!-- Modal Editar Pasta -->
+<div id="modal-editar-pasta" class="modal">
+  <div class="modal-content">
+    <div class="modal-content-forms">
+      <span class="close">&times;</span>
+      <h2>Editar Pasta</h2>
+      <form id="form-editar-pasta" method="POST" action="/documentos/editar/<%= documento._id %>">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="text" name="nome" placeholder="Nome da Pasta" value="<%= documento.nome %>" required>
+        <textarea name="descricao" placeholder="Descrição (opcional)" rows="4"><%= documento.descricao %></textarea>
+        <button type="submit" class="btn-criar-modal">SALVAR ALTERAÇÕES</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Excluir Pasta -->
+<div id="modal-excluir-pasta" class="modal-excluir">
+  <div class="modal-excluir-content">
+    <span class="close" id="close-excluir">&times;</span>
+    <h3>Excluir Pasta</h3>
+    <p>
+      Tem certeza que deseja excluir a pasta <strong>"<%= documento.nome %>"</strong>?<br>
+      Esta ação não poderá ser desfeita e todos os ficheiros nela serão perdidos.
+    </p>
+    <div class="modal-excluir-actions">
+      <form id="form-excluir-pasta" method="POST" action="/documentos/apagar/<%= documento._id %>">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="btn-excluir confirmar">Excluir</button>
+      </form>
+      <button type="button" class="btn-excluir cancelar" id="btn-cancelar-excluir">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+  <%- include('includes/footer') %>
+    
+    <script src="/assets/js/documentos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

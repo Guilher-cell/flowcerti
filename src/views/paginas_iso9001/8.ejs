@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowCerti - ISO 9001:2015 - 8. Operação</title>
+
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/gerenciar_capitulos.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include("../includes/header", { user: user }) %>
+
+    <ul class="breadcrumb">
+  <li><a href="/">Início</a></li>
+  <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+  <li><a href="/dashboard">Dashboard</a></li>
+  <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+  <li><a href="/gerenciar">ISO 9001:2015</a></li>
+  <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+  <li class="current">8. Operação</li>
+</ul>
+
+
+<!-- ===== Página Capítulo 8 ===== -->
+<main class="capitulos">
+  <%- include('../includes/messages') %>
+
+  <div class="capitulos-header">
+    <h2>8. Operação</h2>
+    <p>Escolha qualquer subcapítulo para visualizar seus requisitos e colocar os devidos documentos necessários.</p>
+  </div>
+
+  <div class="capitulos-grid">
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-1"] || 0 %>%</span>
+      <h3>8.1 Planejamento e controle operacionais</h3>
+      <p>Critérios, controles e mudanças operacionais.</p>
+        <a href="/iso9001/8-1" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-2"] || 0 %>%</span>
+      <h3>8.2 Requisitos para produtos e serviços</h3>
+      <p>Comunicação com clientes e análise de requisitos.</p>
+      <a href="/iso9001/8-2" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-3"] || 0 %>%</span>
+      <h3>8.3 Projeto e desenvolvimento</h3>
+      <p>Planejamento, entradas, saídas, verificação e validação.</p>
+      <a href="/iso9001/8-3" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-4"] || 0 %>%</span>
+      <h3>8.4 Processos, produtos e serviços externos</h3>
+      <p>Critérios, avaliação e comunicação a fornecedores.</p>
+      <a href="/iso9001/8-4" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-5"] || 0 %>%</span>
+      <h3>8.5 Produção e provisão de serviços</h3>
+      <p>Condições controladas, rastreabilidade e mudanças.</p>
+      <a href="/iso9001/8-5" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-6"] || 0 %>%</span>
+      <h3>8.6 Liberação de produtos e serviços</h3>
+      <p>Verificações de conformidade e autorização.</p>
+     <a href="/iso9001/8-6" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["8-7"] || 0 %>%</span>
+      <h3>8.7 Controle de saídas não conformes</h3>
+      <p>Registros, ações e concessões controladas.</p>
+      <a href="/iso9001/8-7" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+  </div>
+</main>
+
+    <%- include('../includes/footer') %>
+    
+    <script src="/assets/js/gerenciar_capitulos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

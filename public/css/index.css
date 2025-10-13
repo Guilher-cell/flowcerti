@@ -1,0 +1,546 @@
+/* ===== Hero Section ===== */
+.hero-home {
+  padding: 80px 20px;
+}
+
+.hero-home-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Texto */
+.hero-home-text {
+  flex: 1 1 500px;
+  margin-top: -100px;
+}
+
+.hero-home-text h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-family: "Sora", sans-serif;
+}
+
+.hero-home-text p {
+  font-size: 18px;
+  color: #cccccc;
+  margin-bottom: 30px;
+  margin-top: -5px;
+  line-height: 1.7;
+  font-family: "Inter", sans-serif;
+}
+
+/* Botão */
+.btn-home-hero {
+  background-color: #0084ff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 25px;
+  padding: 18px 42px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-family: "Inter", sans-serif;
+  display: inline-block;
+}
+.btn-home-hero:hover {
+  background-color: #006bcf;
+}
+
+/* Imagem */
+.hero-home-image {
+  flex: 1 1 500px;
+  text-align: center;
+}
+.hero-home-image img {
+  max-width: 140%;
+  height: auto;
+}
+
+/* ===== Seção Certificações ===== */
+.cert-titulo {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  margin-top: 30px;
+  font-family: "Sora", sans-serif;
+}
+
+.cert-subtitulo {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cccccc;
+  margin-bottom: 60px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Grid */
+.cert-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.cert-card {
+  background: transparent;
+  border: 2px solid #2b3b5e;
+  border-radius: 14px;
+  padding: 40px 30px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.cert-card:hover {
+  border-color: #0084ff;
+}
+.cert-card img {
+  max-width: 210px;
+}
+
+.cert-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-family: "Sora", sans-serif;
+}
+.cert-card p {
+  font-size: 15px;
+  color: #cccccc;
+  margin-bottom: 25px;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+
+/* Botão ativo */
+.btn-cert {
+  background-color: #0084ff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 25px;
+  padding: 14px 34px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Inter", sans-serif;
+  display: inline-block;
+}
+.btn-cert:hover {
+  background-color: #006bcf;
+}
+
+/* Card "Em breve" */
+.cert-card.soon {
+  opacity: 0.5;
+  border-style: dashed;
+  pointer-events: none;
+}
+.cert-card.soon h3::after {
+  content: " (em breve)";
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffcc00;
+}
+.cert-card.soon .btn-cert {
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ===== Seção: Simplifique ===== */
+.simplifique {
+  margin-top: 150px;
+}
+
+.simplifique-titulo {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  font-family: "Sora", sans-serif;
+}
+
+.simplifique-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* Imagem (esquerda) */
+.simplifique-image {
+  flex: 1 1 600px;
+  text-align: center;
+  margin-left: -40px;
+}
+
+.simplifique-image img {
+  width: 105%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Texto (direita) */
+.simplifique-texto {
+  flex: 1 1 520px;
+}
+.simplifique-texto p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.9;
+  color: #cccccc;
+}
+
+.simplifique-texto strong {
+  color: #ffffff;
+}
+
+/* ===== Seção Blog ===== */
+.blog-section {
+  margin-top: 150px;
+}
+
+.blog-section-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  font-family: "Sora", sans-serif;
+}
+
+/* Grid de Blogs */
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px 0 0;
+}
+
+/* Card */
+.blog-card {
+  background: #0e1629;
+  padding: 10px 10px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagem */
+.blog-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Conteúdo */
+.blog-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.blog-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Sora", sans-serif;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.blog-content p {
+  font-size: 14px;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}
+.blog-meta {
+  font-size: 12px;
+  color: #aaaaaa;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Link "mais artigos" estilo divisor */
+.blog-more {
+  margin-top: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.blog-more a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cccccc;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  padding: 0 15px;
+  background-color: #0e1629;
+  position: relative;
+  z-index: 1;
+}
+
+/* Linhas laterais */
+.blog-more::before,
+.blog-more::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.blog-more::before {
+  left: 0;
+}
+
+.blog-more::after {
+  right: 0;
+}
+
+.blog-more a:hover {
+  color: #ffffff;
+}
+
+/* ===============================
+   RESPONSIVIDADE TOTAL OTIMIZADA
+=============================== */
+
+/* 🔹 Até 1200px */
+@media (max-width: 1200px) {
+  .hero-home-text {
+    margin-top: -60px;
+  }
+  .hero-home-text h2 {
+    font-size: 32px;
+  }
+  .hero-home-text p {
+    font-size: 17px;
+  }
+  .hero-home-image img {
+    max-width: 115%;
+  }
+  .simplifique-container {
+    gap: 40px;
+  }
+  .simplifique-texto p {
+    font-size: 17px;
+  }
+}
+
+/* 🔹 Até 1100px — centralização e tamanho ajustado */
+@media (max-width: 1100px) {
+  .hero-home {
+    padding: 50px 20px 20px;
+  }
+  .hero-home-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .hero-home-image {
+    margin: 0 auto;
+  }
+  .hero-home-image img {
+    max-width: 78%;
+    height: auto;
+    margin-bottom: 6px;
+  }
+
+  .hero-home-text {
+    margin-top: 10px;
+  }
+  .hero-home-text h2 {
+    font-size: 30px;
+    margin: 6px 0 10px;
+  }
+  .hero-home-text p {
+    font-size: 16px;
+    margin: 0 0 15px;
+  }
+
+  /* Simplifique */
+  .simplifique {
+    margin-top: 90px;
+  }
+  .simplifique-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .simplifique-image {
+    margin-left: 0;
+  }
+  .simplifique-image img {
+    width: 85%;
+    max-width: 680px;
+    margin-bottom: 8px;
+  }
+  .simplifique-titulo {
+    font-size: 30px;
+    margin: 14px 0 10px;
+  }
+  .simplifique-texto {
+    margin-top: 0;
+  }
+  .simplifique-texto p {
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+}
+
+/* 🔹 Até 900px — imagens maiores e espaçamento menor */
+@media (max-width: 900px) {
+  .hero-home {
+    padding: 40px 18px 18px;
+  }
+  .hero-home-container {
+    gap: 8px;
+  }
+  .hero-home-text h2 {
+    font-size: 28px;
+  }
+  .hero-home-text p {
+    font-size: 15px;
+  }
+  .hero-home-image img {
+    max-width: 82%;
+    margin-bottom: 8px;
+  }
+
+  .simplifique {
+    margin-top: 70px;
+  }
+  .simplifique-container {
+    gap: 10px;
+  }
+  .simplifique-image img {
+    width: 88%;
+    max-width: 640px;
+  }
+  .simplifique-texto p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .blogs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 🔹 Até 700px — centralização perfeita e proporção equilibrada */
+@media (max-width: 700px) {
+  .hero-home {
+    padding: 30px 16px 18px;
+  }
+  .hero-home-container {
+    gap: 6px;
+  }
+  .hero-home-text h2 {
+    font-size: 25px;
+    margin: 10px 0 8px;
+  }
+  .hero-home-text p {
+    font-size: 14.5px;
+  }
+  .btn-home-hero {
+    padding: 12px 28px;
+    font-size: 13.5px;
+  }
+  .hero-home-image img {
+    max-width: 86%;
+  }
+
+  .simplifique {
+    margin-top: 55px;
+  }
+  .simplifique-container {
+    gap: 8px;
+  }
+  .simplifique-image img {
+    width: 90%;
+  }
+  .simplifique-titulo {
+    font-size: 25px;
+    margin-bottom: 12px;
+  }
+  .simplifique-texto p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* 🔹 Até 500px — layout fluido, imagem central e espaçamento mínimo */
+@media (max-width: 500px) {
+  .hero-home {
+    padding: 24px 12px 14px;
+  }
+  .hero-home-container {
+    gap: 4px;
+  }
+  .hero-home-text h2 {
+    font-size: 23px;
+    line-height: 1.25;
+  }
+  .hero-home-text p {
+    font-size: 13.5px;
+    margin-bottom: 10px;
+  }
+  .hero-home-image img {
+    max-width: 92%;
+  }
+
+  .simplifique {
+    margin-top: 50px;
+  }
+  .simplifique-container {
+    gap: 6px;
+  }
+  .simplifique-image img {
+    width: 95%;
+  }
+  .simplifique-titulo {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .simplifique-texto p {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .blogs-grid {
+    grid-template-columns: 1fr;
+  }
+}

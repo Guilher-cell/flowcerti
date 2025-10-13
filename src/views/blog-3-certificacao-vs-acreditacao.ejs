@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FlowCerti</title>
+    
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/page-blogs.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("includes/header", { user: user }) %>
+    
+    <main class="blog-page">
+  <!-- Breadcrumb -->
+  <ul class="breadcrumb">
+    <li><a href="/">Início</a></li>
+    <li>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+           viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" 
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </li>
+    <li><a href="/blogs">Blog</a></li>
+    <li>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+           viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" 
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </li>
+    <li class="current">Certificação Diferenças</li>
+  </ul>
+
+  <!-- Conteúdo do Blog -->
+  <article class="blog-article">
+    <header>
+      <h1>Certificação, Acreditação, Selo ou Declaração: Qual a Diferença?</h1>
+      <div class="blog-info">
+        <span>09/10/25</span> • <span>5 min. de leitura</span>
+      </div>
+      <!-- Capa -->
+      <img src="Imagem/blogs/certificacao-vs-acreditacao.png" alt="Certificação vs Acreditação" class="blog-cover">
+    </header>
+
+    <!-- Introdução -->
+    <section>
+      <p>
+        Quando falamos de qualidade, conformidade e reconhecimento organizacional, é comum surgirem dúvidas entre os termos
+        certificação, acreditação, selo e declaração. Mas afinal, qual deles a sua empresa realmente precisa para comprovar
+        eficiência, compromisso e posicionamento no mercado?
+      </p>
+      <p>
+        Neste artigo, vamos explicar de forma simples e objetiva cada um desses conceitos, mostrando seus objetivos,
+        finalidades e diferenças.
+      </p>
+    </section>
+
+    <!-- Imagem 1 (Certificação) -->
+    <figure class="blog-media">
+      <img src="Imagem/blogs/iso9001-processos.png" alt="Certificação ISO">
+      <figcaption>Certificação é a avaliação independente que atesta conformidade com normas como ISO 9001 e ISO 14001</figcaption>
+    </figure>
+
+    <h2>O que é Certificação?</h2>
+    <p>
+      A certificação é um processo formal e independente, realizado por um organismo de avaliação da conformidade, com o objetivo
+      de atestar se uma empresa, produto, processo ou serviço atende aos requisitos exigidos em normas nacionais ou internacionais.
+    </p>
+    <ul>
+      <li>ISO 9001 – Gestão da Qualidade</li>
+      <li>ISO 14001 – Gestão Ambiental</li>
+      <li>ISO 45001 – Saúde e Segurança Ocupacional</li>
+    </ul>
+    <p><strong>Benefícios:</strong> confiança dos clientes, valorização de colaboradores, processos mais eficientes, produtividade e fortalecimento da marca.</p>
+
+    <!-- Imagem 2 (Acreditação) -->
+    <figure class="blog-media">
+      <img src="Imagem/blogs/acreditacao-hospitalar.png" alt="Acreditação Hospitalar">
+      <figcaption>Acreditação é muito usada na saúde: hospitais acreditados pela ONA reduzem erros e aumentam a segurança</figcaption>
+    </figure>
+
+    <h2>O que é Acreditação?</h2>
+    <p>
+      A acreditação é o reconhecimento formal da competência técnica de um organismo de avaliação da conformidade.
+      É o processo pelo qual uma instituição oficial atesta que uma certificadora está apta para conduzir auditorias e recomendar certificações.
+    </p>
+    <p>Exemplo: Acreditação ONA, que avalia padrões de qualidade e segurança hospitalar.</p>
+
+    <!-- Imagem 3 (Selo) -->
+    <figure class="blog-media">
+      <img src="Imagem/blogs/selo-produto.png" alt="Selo de Qualidade">
+      <figcaption>O selo é o símbolo visual que comunica conformidade de forma rápida ao consumidor</figcaption>
+    </figure>
+
+    <h2>O que é Selo?</h2>
+    <p>
+      O selo é um distintivo visual que simboliza a conformidade com uma norma ou padrão. Exemplos:
+    </p>
+    <ul>
+      <li>Selo Procel Edificações – eficiência energética</li>
+      <li>Selo Suíno Paulista – qualidade agropecuária</li>
+    </ul>
+    <p>👉 Em resumo, o selo é o porta-voz visual da certificação ou acreditação.</p>
+
+    <!-- Imagem 4 (Declaração) -->
+    <figure class="blog-media">
+      <img src="Imagem/blogs/declaracao-documento.png" alt="Declaração de Conformidade">
+      <figcaption>A declaração é uma autodeclaração emitida pela própria organização, sem auditoria externa</figcaption>
+    </figure>
+
+    <h2>O que é uma Declaração?</h2>
+    <p>
+      A declaração é um documento emitido pela própria organização ou pessoa, atestando conformidade com critérios específicos,
+      sem auditorias externas. Exemplo: declarações de emissões de gases de efeito estufa (ISO 14064, GHG Protocol).
+    </p>
+
+    <h2>Conclusão</h2>
+    <ul>
+      <li><strong>Certificação:</strong> avaliação independente que comprova conformidade.</li>
+      <li><strong>Acreditação:</strong> reconhecimento da competência de organismos certificadores.</li>
+      <li><strong>Selo:</strong> símbolo visual de conformidade.</li>
+      <li><strong>Declaração:</strong> documento de autodeclaração.</li>
+    </ul>
+    <p>
+      Cada um desses mecanismos tem objetivos e aplicações diferentes, mas todos contribuem para credibilidade,
+      confiança e competitividade no mercado.
+    </p>
+
+    <!-- Nota final -->
+    <aside class="blog-note">
+      <strong>Nota:</strong> Este artigo foi escrito em 9 de outubro de 2025. Dependendo da época
+      em que for lido, as informações podem estar desatualizadas.
+    </aside>
+  </article>
+</main>
+  <%- include('includes/footer') %>
+   
+    <script src="/assets/script.js"></script>
+</body>
+</html>

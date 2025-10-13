@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowCerti - ISO 9001:2015 - 10. Melhoria</title>
+
+    <link rel="icon" type="image/png" href="Imagem/footer/logo_pequena.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/gerenciar_capitulos.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("../includes/header", { user: user }) %>
+    <ul class="breadcrumb">
+  <li><a href="/">Início</a></li>
+  <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+  <li><a href="/dashboard">Dashboard</a></li>
+  <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+  <li><a href="/gerenciar">ISO 9001:2015</a></li>
+  <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cccccc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+  <li class="current">10. Melhoria</li>
+</ul>
+
+
+<!-- ===== Página Capítulo 10 ===== -->
+<main class="capitulos">
+  <%- include('../includes/messages') %>
+
+  <div class="capitulos-header">
+    <h2>10. Melhoria</h2>
+    <p>Escolha qualquer subcapítulo para visualizar seus requisitos e colocar os devidos documentos necessários.</p>
+  </div>
+
+  <div class="capitulos-grid three-columns">
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["10-1"] || 0 %>%</span>
+      <h3>10.1 Generalidades</h3>
+      <p>Registros de oportunidades de melhoria.</p>
+      <a href="/iso9001/10-1" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["10-2"] || 0 %>%</span>
+      <h3>10.2 Não conformidade e ação corretiva</h3>
+      <p>Relatórios, causa raiz e eficácia das ações.</p>
+      <a href="/iso9001/10-2" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+
+    <div class="capitulos-card">
+       <span class="capitulos-progress"><%= progressoCapitulo["10-3"] || 0 %>%</span>
+      <h3>10.3 Melhoria contínua</h3>
+      <p>Planos, registros e resultados alcançados.</p>
+      <a href="/iso9001/10-3" class="btn-capitulos-gerenciar">GERENCIAR</a>
+    </div>
+  </div>
+</main>
+
+    <%- include('../includes/footer') %>
+    
+    <script src="/assets/js/gerenciar_capitulos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
