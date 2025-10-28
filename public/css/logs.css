@@ -1,0 +1,164 @@
+/* ====== FlowCerti Logs Style ====== */
+body {
+  background: #0e1629;
+  color: #ccc;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+/* ====== Container Geral ====== */
+.logs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ====== Header ====== */
+.logs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.logs-header h2 {
+  color: #ffffff;
+  font-family: "Sora", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ====== Botão Voltar ====== */
+.btn-voltar {
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid #3da0fc;
+  color: #3da0fc;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+  background: #3da0fc;
+  color: #ffffff; 
+}
+
+/* ====== Ferramentas (Filtro e Quantidade) ====== */
+.logs-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.logs-tools input {
+  flex: 1 1 320px;
+  background: #101c34;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.logs-tools input::placeholder {
+  color: #b3b3b3;
+}
+
+.logs-tools input:focus {
+  border-color: #3da0fc;
+  box-shadow: 0 0 0 3px rgba(61, 160, 252, 0.15);
+}
+
+.qtd-registros {
+  color: #999999;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ====== Tabela ====== */
+.tabela-wrapper {
+  background: #101c34;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+thead {
+  background: #182743;
+}
+
+th {
+  color: #3da0fc;
+  text-align: left;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+td {
+  padding: 12px;
+  color: #cccccc;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  word-break: break-word;
+}
+
+/* Alternância de cores nas linhas */
+tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Hover */
+tbody tr:hover {
+  background: rgba(61, 160, 252, 0.1);
+  transition: background 0.3s ease;
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .logs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logs-header h2 {
+    font-size: 22px;
+  }
+
+  th,
+  td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .btn-voltar {
+    align-self: flex-start;
+  }
+
+  .logs-tools input {
+    flex: 1 1 100%;
+  }
+}

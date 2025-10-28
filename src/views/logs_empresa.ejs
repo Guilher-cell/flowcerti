@@ -1,41 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>logs empresa</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logs dos Funcionários - Flowcerti</title>
+  <link rel="stylesheet" href="/css/logs.css"/>
 </head>
 <body>
-    <h2>📑 Logs dos Funcionários</h2>
-<table border="1" cellpadding="8" cellspacing="0">
-<thead>
-    <tr>
-      <th>Data/Hora</th>
-      <th>Funcionário</th>
-      <th>Ação</th>
-      <th>Módulo</th>
-      <th>Documento</th>
-      <th>Arquivo</th>
-      <th>Aprovado Por</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% logs.forEach(log => { %>
-    <% if (log.acao !== "Criou funcionário") { %> 
-      <tr>
-        <td><%= log.criadoEm.toLocaleString() %></td>
-        <td><%= log.usuarioNome %></td>
-        <td><%= log.acao %></td>
-        <td><%= log.modulo %></td>
-        <td><%= log.nomeDocumento || '-' %></td>
-        <td><%= log.nomeArquivo || '-' %></td>
-        <td><%= log.aprovadoPor || '-' %></td>
-      </tr>
-    <% } %>
-  <% }) %>
-</tbody>
+  <main class="logs-container">
+    <div class="logs-header">
+      <a href="/" id="btnVoltar" class="btn-voltar" data-fallback="/dashboard"> Voltar</a>
+      <h2>Logs dos Funcionários</h2>
+    </div>
 
-</table>
-</table>
+    <div class="logs-tools">
+      <input id="campoFiltro" type="text" placeholder="Filtrar por texto (funcionário, ação, módulo...)" />
+      <span class="qtd-registros" id="qtdRegistros"></span>
+    </div>
+
+    <div class="tabela-wrapper">
+      <table id="tabelaLogs">
+        <thead>
+          <tr>
+            <th>Data/Hora</th>
+            <th>Funcionário</th>
+            <th>Ação</th>
+            <th>Módulo</th>
+            <th>Documento</th>
+            <th>Arquivo</th>
+            <th>Aprovado Por</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% logs.forEach(log => { %>
+            <% if (log.acao !== "Criou funcionário") { %>
+            <tr>
+              <td><%= log.criadoEm.toLocaleString() %></td>
+              <td><%= log.usuarioNome %></td>
+              <td><%= log.acao %></td>
+              <td><%= log.modulo %></td>
+              <td><%= log.nomeDocumento || '-' %></td>
+              <td><%= log.nomeArquivo || '-' %></td>
+              <td><%= log.aprovadoPor || '-' %></td>
+            </tr>
+            <% } %>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="/assets/js/logs.js"></script>
 </body>
 </html>
